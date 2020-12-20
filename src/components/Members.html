@@ -4,7 +4,7 @@
 			<h2 class="page-title"> ¿Quiénes somos? </h2>
 		</div>
 		<ul class="flex-container text-center flex-container-organizers list">
-			{#each organizers as member (member.id)}
+      {#each organizers as member (member.id)}
 			<MemberItem name="{member.name}" role="organizer" photo="{member.photo ? member.photo.photo_link : undefined}" />
       {/each}
 		</ul>
@@ -22,9 +22,9 @@
     },
     computed: {
       organizers: ({ members }) =>
-        members.filter(member => typeof member.group_profile.role !== "undefined"),
+        members.filter(member => (typeof member.group_profile.role !== "undefined" || member.name == 'Edgardo' || member.name == 'Jesus B.')),
       regularMembers: ({ members }) =>
-        members.filter(member => typeof member.group_profile.role == "undefined")
+        members.filter(member => (typeof member.group_profile.role == "undefined" && member.name != 'Edgardo' && member.name != 'Jesus B.'))
     }
   };
 </script>
